@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="profile-info" bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="info">
+      <text class="name">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <view class='separate'></view>
+
+  <view class='user_area'>
+    <view class='user_row' bindtap='goOrder'>
+      <view class='user_row_left'>我的订单</view>
+      <van-icon class='user_row_right' name="arrow" />      
+    </view>
+    <view class='user_column'>
+      <view class='user_column_item' bindtap='goOrderIndex' data-index='1' data-route='/pages/ucenter/order/order'>
+        <text class="user_column_item_badge" wx:if="{{order.unpaid != 0}}">{{order.unpaid}}</text>
+        <image class='user_column_item_image' src='/static/images/pendpay.png'>
+        </image>
+        <view class='user_column_item_text'>待付款</view>
+      </view>
+      <view class='user_column_item' bindtap='goOrderIndex' data-index='2' data-route='/pages/ucenter/order/order'>
+        <text class="user_column_item_badge" wx:if="{{order.unship != 0}}">{{order.unship}}</text>
+        <image class='user_column_item_image' src='/static/images/send.png'></image>
+        <view class='user_column_item_text'>待发货</view>
+      </view>
+      <view class='user_column_item' bindtap='goOrderIndex' data-index='3' data-route='/pages/ucenter/order/order'>
+        <text class="user_column_item_badge" wx:if="{{order.unrecv != 0}}">{{order.unrecv}}</text>
+        <image class='user_column_item_image' src='/static/images/receive.png'></image>
+        <view class='user_column_item_text'>待收货</view>
+      </view>
+      <view class='user_column_item' bindtap='goOrderIndex' data-index='4' data-route='/pages/ucenter/order/order'>
+        <text class="user_column_item_badge" wx:if="{{order.uncomment != 0}}">{{order.uncomment}}</text>
+        <image class='user_column_item_image' src='/static/images/comment.png'></image>
+        <view class='user_column_item_text'>待评价</view>
+      </view>
+      <view class='user_column_item' bindtap='goAfterSale'>
+        <image class='user_column_item_image' src='/static/images/aftersale.png'></image>
+        <view class='user_column_item_text'>售后</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='separate'></view>
+
+  <view class='user_row'>
+    <view class='user_row_left'>核心服务</view>
+  </view>
+  <view class='user_column'>
+
+    <view class='user_column_item' bindtap='goCoupon'>
+      <image class='user_column_item_image' src='/static/images/coupon.png'></image>
+      <view class='user_column_item_text'>优惠卷</view>
+    </view>
+    <view class='user_column_item' bindtap='goCollect'>
+      <image class='user_column_item_image' src='/static/images/collect.png'></image>
+      <view class='user_column_item_text'>商品收藏</view>
+    </view>
+    <view class='user_column_item' bindtap='goFootprint'>
+      <image class='user_column_item_image' src='/static/images/footprint.png'></image>
+      <view class='user_column_item_text'>浏览足迹</view>
+    </view>
+    <view class='user_column_item' bindtap='goAddress'>
+      <image class='user_column_item_image' src='/static/images/address.png'></image>
+      <view class='user_column_item_text'>地址管理</view>
+    </view>
+  </view>
+  <view class='separate'></view>
+  <view class='separate'></view>
+
+  <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view>
+</view>
